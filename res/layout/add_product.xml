@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <!-- Name Label -->
+    
+    <!-- Input Name -->
+
+    <EditText
+        android:id="@+id/inputFname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:layout_marginBottom="10dip"
+        android:ems="10"
+        android:hint="First Name"
+        android:singleLine="true" />
+
+    <EditText
+        android:id="@+id/inputLname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:layout_marginBottom="10dip"
+        android:ems="10"
+        android:hint="Last Name"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+	
+	 <!-- Name Label -->
+    
+    <!-- Input Name -->
+	
+	 <!-- Name Label -->
+    
+    <!-- Input Name -->
+
+	<EditText
+	    android:id="@+id/inputUsername"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="5dip"
+	    android:layout_marginBottom="10dip"
+	    android:hint="Username"
+	    android:singleLine="true" />
+	
+	 <!-- Name Label -->
+    
+    <!-- Input Name -->
+
+	<EditText
+	    android:id="@+id/inputPassword"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="5dip"
+	    android:layout_marginBottom="10dip"
+	    android:hint="Password"
+	    android:singleLine="true" />
+	
+	 <!-- Name Label -->
+    
+    <!-- Input Name -->
+
+	<EditText
+	    android:id="@+id/inputEmail"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="5dip"
+	    android:layout_marginBottom="10dip"
+	    android:hint="Email"
+	    android:singleLine="true" />
+	
+	 <!-- Name Label -->
+    
+    <!-- Input Name -->
+
+	<EditText
+	    android:id="@+id/inputMajor"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="5dip"
+	    android:layout_marginBottom="10dip"
+	    android:hint="Major"
+	    android:singleLine="true" />
+	
+	 <!-- Name Label -->
+    
+    <!-- Input Name -->
+
+	<EditText
+	    android:id="@+id/inputGender"
+	    android:layout_width="fill_parent"
+	    android:layout_height="20dp"
+	    android:layout_margin="5dip"
+	    android:layout_marginBottom="10dip"
+	    android:hint="Gender"
+	    android:singleLine="true" />
+	
+	 <!-- Name Label -->
+    
+    <!-- Input Name -->
+
+	<EditText
+	    android:id="@+id/inputAge"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="5dip"
+	    android:layout_marginBottom="10dip"
+	    android:hint="Age"
+	    android:singleLine="true" />
+
+		<!-- Button Create Product -->
+		
+	<Button android:id="@+id/btnCreateProduct" 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:text="Create Product"/>
+</LinearLayout>
