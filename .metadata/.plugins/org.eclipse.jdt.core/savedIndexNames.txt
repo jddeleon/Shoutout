@@ -1,2 +1,0 @@
-INDEX VERSION 1.126+C:\Users\GaijinAir\Shoutout\.metadata\.plugins\org.eclipse.jdt.core
-4160062723.index
