@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="name">Full Name</string>
+    <string name="sexfield">Sex</string>
+    <string name="majorfield">Major</string>
+    <string name="Pass">Password</string>
+    <string name="Usern">Username</string>
+    <string name="Register">Register</string>
+    <string name="first">First Name</string>
+    <string name="last">Last Name</string>
+    <string name="alreadyreg">Login Here</string>
+    <string name="age">Age</string>
+</resources>
