@@ -97,14 +97,22 @@
                 android:layout_marginBottom="20dip"/>
           <!-- Gender -->
           <!--Make seletion between Male and female instead of input  -->
-          <EditText android:id="@+id/reg_gender"
-              	android:hint="@string/genderfield"
+<!--            <EditText android:id="@+id/reg_gender"
+                android:hint="@string/genderfield"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:layout_marginTop="5dip"
-                android:layout_marginBottom="20dip"/>
-          
+                android:layout_marginBottom="20dip"/> -->
+		  <!-- Gender -->
+          <!--Make seletion between Male and female instead of input  -->
+
+          <Spinner
+              android:id="@+id/gender_spinner"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:entries="@array/gender"
+              />
           <!-- Register Button -->
           <Button 
               	android:id="@+id/btnRegister"

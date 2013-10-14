@@ -26,6 +26,13 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Button;
  
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TextView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
 public class RegisterActivity extends Activity {
 
 	// Progress Dialog
@@ -52,36 +59,46 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         // Set View to register.xml
         setContentView(R.layout.register);
+//---------------------------------------------------------------------------------------------------------------------------------------
+        Spinner genderselect= (Spinner) findViewById(R.id.gender_spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.gender, android.R.layout.simple_list_item_1);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         
-/* 	R.java
-        public static final int reg_age=0x7f080007;
-        public static final int reg_email=0x7f080008;
-        public static final int reg_first=0x7f080004;
-        public static final int reg_last=0x7f080005;
-        public static final int reg_major=0x7f08000a;
-        public static final int reg_password=0x7f080009;
-        public static final int reg_sex=0x7f08000b;
-        public static final int reg_username=0x7f080006;
-*/
-        
-        
+        genderselect.setAdapter(adapter);
+        genderselect.setOnItemSelectedListener(new OnItemSelectedListener()  {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, 
+		            int pos, long id) {
+		        // An item was selected. You can retrieve the selected item using
+		         parent.getItemAtPosition(pos);
+		         Log.d("gendertest", (String) parent.getItemAtPosition(pos));
+		    }
+
+		    public void onNothingSelected(AdapterView<?> parent) {
+		        // Another interface callback
+		    }
+
+        });
+//---------------------------------------------------------------------------------------------------------------------------------------
+
         regAge = (EditText) findViewById(R.id.reg_age);
         regEmail = (EditText) findViewById(R.id.reg_email);
         regFirst = (EditText) findViewById(R.id.reg_first);
         regLast = (EditText) findViewById(R.id.reg_last);
         regMajor = (EditText) findViewById(R.id.reg_major);
         regPassword = (EditText) findViewById(R.id.reg_password);
-        regGender = (EditText) findViewById(R.id.reg_gender);
+        regGender = (EditText) findViewById(R.id.gender_spinner);
         regUsername = (EditText) findViewById(R.id.reg_username);
  
       //------------------------------------------------------------------------
     	/**
     	 * Background Async Task to Create new product
     	 * 
-    	 * Actually you can define this class at very end of the program by import
+    	 * Actually you can define this class at very end of the program by doing this
     	 * import com.shout_out.RegisterActivity.CreateNewUser;
     	 * But I failed to do so. So I just moved everything before that call happen.
-    	 * Siyao
+    	 * Simon
     	 * 
     	 * */
     	class CreateNewUser extends AsyncTask<String, String, String> {
@@ -102,16 +119,6 @@ public class RegisterActivity extends Activity {
     		/**
     		 * Creating user
     		 * */
-    		/* 	R.java
-            public static final int reg_age=0x7f080007;
-            public static final int reg_email=0x7f080008;
-            public static final int reg_first=0x7f080004;
-            public static final int reg_last=0x7f080005;
-            public static final int reg_major=0x7f08000a;
-            public static final int reg_password=0x7f080009;
-            public static final int reg_sex=0x7f08000b;
-            public static final int reg_username=0x7f080006;
-    */
     		protected String doInBackground(String... args) {
     			String str_regAge = regAge.getText().toString();
     			String str_regEmail = regEmail.getText().toString();
@@ -119,7 +126,7 @@ public class RegisterActivity extends Activity {
     			String str_regLast = regLast.getText().toString();
     			String str_regMajor = regMajor.getText().toString();
     			String str_regPassword = regPassword.getText().toString();
-    			//String str_regGender = regGender.getText().toString();
+    			String str_regGender = regGender.getText().toString();
     			String str_regUsername = regUsername.getText().toString();
 
 
@@ -131,7 +138,7 @@ public class RegisterActivity extends Activity {
     			params.add(new BasicNameValuePair("regLast", str_regLast));
     			params.add(new BasicNameValuePair("regMajor", str_regMajor));
     			params.add(new BasicNameValuePair("regPassword", str_regPassword));
-    			//params.add(new BasicNameValuePair("regGender", str_regGender));
+    			params.add(new BasicNameValuePair("regGender", str_regGender));
     			params.add(new BasicNameValuePair("regUsername", str_regUsername));
 
     			// getting JSON Object
