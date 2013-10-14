@@ -61,6 +61,16 @@
                 android:inputType="textPassword"
                 android:maxLines="1"/>
           <!-- Login button -->
+          
+          <CheckBox 
+              	android:id="@+id/checkbox"
+              	android:layout_width="fill_parent"
+              	android:layout_height="wrap_content"
+              	android:checked="false"
+              	android:text="@string/savepass"
+              
+              
+              />
           <Button 
               	android:id="@+id/btnLogin"
                 android:layout_width="fill_parent"

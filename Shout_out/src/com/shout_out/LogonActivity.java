@@ -19,8 +19,8 @@ public class LogonActivity extends Activity {
         registerScreen.setOnClickListener(new View.OnClickListener() {
         	    public void onClick(View v) {
                 //Switching to Register screen
-                Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-                startActivity(i);
+                Intent gotoreg = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(gotoreg);
             }
         });
     }

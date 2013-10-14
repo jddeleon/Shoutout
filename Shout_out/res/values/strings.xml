@@ -5,6 +5,7 @@
     <string name="email">Email</string>
     <string name="app_name">ShoutOut</string>
     <string name="login">Login</string>
+    <string name="savepass">Remember Password</string>
 
 </resources>
 

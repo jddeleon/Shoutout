@@ -79,7 +79,8 @@
                 android:maxLines="1"/>
           <!-- Password -->
           
-          <EditText android:id="@+id/reg_password"
+          <EditText 
+              	android:id="@+id/reg_password"
               	android:hint="@string/Pass"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -88,24 +89,26 @@
                 android:layout_marginTop="5dip"
                 android:layout_marginBottom="20dip"/>
           <!--Major  -->
-          <EditText android:id="@+id/reg_major"
+          <EditText 
+              	android:id="@+id/reg_major"
               	android:hint="@string/majorfield"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
                 android:layout_marginTop="5dip"
                 android:layout_marginBottom="20dip"/>
-          <!-- Sex -->
+          <!-- Gender -->
           <!--Make seletion between Male and female instead of input  -->
-          <EditText android:id="@+id/reg_sex"
-              	android:hint="@string/sexfield"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:layout_marginTop="5dip"
-                android:layout_marginBottom="20dip"/>
           
           <!-- Register Button -->
+
+          <Spinner
+              android:id="@+id/gender_spinner"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" 
+              android:entries="@array/gender"
+              />
+
           <Button 
               	android:id="@+id/btnRegister"
                 android:layout_width="fill_parent"
