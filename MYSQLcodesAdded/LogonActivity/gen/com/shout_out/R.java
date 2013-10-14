@@ -33,10 +33,10 @@ public final class R {
         public static final int reg_age=0x7f080007;
         public static final int reg_email=0x7f080008;
         public static final int reg_first=0x7f080004;
+        public static final int reg_gender=0x7f08000b;
         public static final int reg_last=0x7f080005;
         public static final int reg_major=0x7f08000a;
         public static final int reg_password=0x7f080009;
-        public static final int reg_sex=0x7f08000b;
         public static final int reg_username=0x7f080006;
     }
     public static final class layout {
@@ -58,12 +58,12 @@ public final class R {
         public static final int app_name=0x7f050003;
         public static final int email=0x7f050002;
         public static final int first=0x7f05000b;
+        public static final int genderfield=0x7f050006;
         public static final int last=0x7f05000c;
         public static final int login=0x7f050004;
         public static final int majorfield=0x7f050007;
         public static final int name=0x7f050005;
         public static final int passw=0x7f050001;
-        public static final int sexfield=0x7f050006;
     }
     public static final class style {
         /** 

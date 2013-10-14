@@ -39,7 +39,7 @@ public class RegisterActivity extends Activity {
 	EditText regEmail;
 	EditText regPassword;
 	EditText regMajor;
-	EditText regSex;
+	EditText regGender;
 
 	// URL to create new user
 	private static String url_create_user = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/replacethis.php";
@@ -71,7 +71,7 @@ public class RegisterActivity extends Activity {
         regLast = (EditText) findViewById(R.id.reg_last);
         regMajor = (EditText) findViewById(R.id.reg_major);
         regPassword = (EditText) findViewById(R.id.reg_password);
-        regSex = (EditText) findViewById(R.id.reg_sex);
+        regGender = (EditText) findViewById(R.id.reg_gender);
         regUsername = (EditText) findViewById(R.id.reg_username);
  
       //------------------------------------------------------------------------
@@ -119,7 +119,7 @@ public class RegisterActivity extends Activity {
     			String str_regLast = regLast.getText().toString();
     			String str_regMajor = regMajor.getText().toString();
     			String str_regPassword = regPassword.getText().toString();
-    			//String str_regSex = regSex.getText().toString();
+    			//String str_regGender = regGender.getText().toString();
     			String str_regUsername = regUsername.getText().toString();
 
 
@@ -131,7 +131,7 @@ public class RegisterActivity extends Activity {
     			params.add(new BasicNameValuePair("regLast", str_regLast));
     			params.add(new BasicNameValuePair("regMajor", str_regMajor));
     			params.add(new BasicNameValuePair("regPassword", str_regPassword));
-    			//params.add(new BasicNameValuePair("regSex", str_regSex));
+    			//params.add(new BasicNameValuePair("regGender", str_regGender));
     			params.add(new BasicNameValuePair("regUsername", str_regUsername));
 
     			// getting JSON Object

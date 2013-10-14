@@ -95,10 +95,10 @@
                 android:singleLine="true"
                 android:layout_marginTop="5dip"
                 android:layout_marginBottom="20dip"/>
-          <!-- Sex -->
+          <!-- Gender -->
           <!--Make seletion between Male and female instead of input  -->
-          <EditText android:id="@+id/reg_sex"
-              	android:hint="@string/sexfield"
+          <EditText android:id="@+id/reg_gender"
+              	android:hint="@string/genderfield"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
