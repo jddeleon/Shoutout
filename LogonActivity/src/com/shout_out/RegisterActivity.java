@@ -73,6 +73,8 @@ public class RegisterActivity extends Activity {
                         // An item was selected. You can retrieve the selected item using
                          parent.getItemAtPosition(pos);
                          Log.d("gendertest", (String) parent.getItemAtPosition(pos));
+                         Integer indexValue = parent.getSelectedItemPosition();
+        		         Log.i("my results", "value =" + indexValue);
                     }
 
                     public void onNothingSelected(AdapterView<?> parent) {
@@ -88,7 +90,7 @@ public class RegisterActivity extends Activity {
         regLast = (EditText) findViewById(R.id.reg_last);
         regMajor = (EditText) findViewById(R.id.reg_major);
         regPassword = (EditText) findViewById(R.id.reg_password);
-        regGender = (Spinner) findViewById(R.id.gender_spinner);//*****
+        regGender = (Spinner) findViewById(R.id.gender_spinner);
         regUsername = (EditText) findViewById(R.id.reg_username);
         regConfirmPass = (EditText) findViewById(R.id.reg_confirmpass);
  
