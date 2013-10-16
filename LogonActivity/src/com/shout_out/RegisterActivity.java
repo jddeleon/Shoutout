@@ -193,6 +193,8 @@ public class RegisterActivity extends Activity {
                              public void onClick(View view) {
                                      // creating new product in background thread
                                      new CreateNewUser().execute();
+                                     Intent gologin = new Intent(getApplicationContext(), LogonActivity.class);
+                                     startActivity(gologin);
                              }
                      });
 

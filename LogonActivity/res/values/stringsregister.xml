@@ -3,6 +3,7 @@
     <string name="name">Full Name</string>
     <string name="majorfield">Major</string>
     <string name="Pass">Password</string>
+    <string name="Passconfirm">Confirm Password</string>
     <string name="Usern">Username</string>
     <string name="Register">Register</string>
     <string name="first">First Name</string>
@@ -12,6 +13,7 @@
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
+        <item >Decline</item>
         
-	</string-array>
+    </string-array>
 </resources>
