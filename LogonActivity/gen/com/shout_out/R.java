@@ -28,18 +28,19 @@ public final class R {
     }
     public static final class id {
         public static final int btnLogin=0x7f090003;
-        public static final int btnRegister=0x7f09000d;
-        public static final int btnlink_to_login=0x7f09000e;
+        public static final int btnRegister=0x7f09000e;
+        public static final int btnlink_to_login=0x7f09000f;
         public static final int btnlink_to_register=0x7f090004;
         public static final int checkbox=0x7f090002;
         public static final int footer=0x7f090001;
-        public static final int gender_spinner=0x7f09000c;
+        public static final int gender_spinner=0x7f09000d;
         public static final int header=0x7f090000;
         public static final int reg_age=0x7f090008;
+        public static final int reg_confirmpass=0x7f09000b;
         public static final int reg_email=0x7f090009;
         public static final int reg_first=0x7f090005;
         public static final int reg_last=0x7f090006;
-        public static final int reg_major=0x7f09000b;
+        public static final int reg_major=0x7f09000c;
         public static final int reg_password=0x7f09000a;
         public static final int reg_username=0x7f090007;
     }
@@ -53,6 +54,7 @@ public final class R {
         public static final int logon=0x7f080000;
     }
     public static final class string {
+        public static final int ConfirmPass=0x7f05000f;
         public static final int Pass=0x7f050008;
         public static final int Regist=0x7f050000;
         public static final int Register=0x7f05000a;

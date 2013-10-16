@@ -9,9 +9,10 @@
     <string name="last">Last Name</string>
     <string name="alreadyreg">Login Here</string>
     <string name="age">Age</string>
+    <string name="ConfirmPass">Confirm Password</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
-        
+    	<item>Decliened</item>
 	</string-array>
 </resources>
