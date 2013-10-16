@@ -1,6 +1,5 @@
 package com.shout_out;
 
-//import com.example.androidhive.JSONParser;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -16,6 +15,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.shout_out.JSONParser;
 import com.shout_out.LogonActivity;
 import com.shout_out.RegisterActivity;
 import com.shout_out.R;
