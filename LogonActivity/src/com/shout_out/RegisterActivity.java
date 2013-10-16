@@ -46,6 +46,7 @@ public class RegisterActivity extends Activity {
         EditText regPassword;
         EditText regMajor;
         Spinner regGender;
+        EditText regConfirmPass;
 
         // URL to create new user
         private static String url_create_user = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/replacethis.php";
@@ -87,9 +88,9 @@ public class RegisterActivity extends Activity {
         regLast = (EditText) findViewById(R.id.reg_last);
         regMajor = (EditText) findViewById(R.id.reg_major);
         regPassword = (EditText) findViewById(R.id.reg_password);
-//        regGender = (EditText) findViewById(R.id.gender_spinner);
-        regGender = (Spinner)findViewById(R.id.gender_spinner);//*****
+        regGender = (Spinner) findViewById(R.id.gender_spinner);//*****
         regUsername = (EditText) findViewById(R.id.reg_username);
+        regConfirmPass = (EditText) findViewById(R.id.reg_confirmpass);
  
       //------------------------------------------------------------------------
             /**
@@ -126,9 +127,9 @@ public class RegisterActivity extends Activity {
                             String str_regLast = regLast.getText().toString();
                             String str_regMajor = regMajor.getText().toString();
                             String str_regPassword = regPassword.getText().toString();
-                            //String str_regGender = regGender.getText().toString();
                             String str_regUsername = regUsername.getText().toString();
-                            String str_regGender = regGender.getSelectedItem().toString();  
+                            String str_regGender = regGender.getSelectedItem().toString();
+                            String str_regConfirmPass = regConfirmPass.getText().toString();
 
 
                             // Building Parameters
@@ -139,9 +140,9 @@ public class RegisterActivity extends Activity {
                             params.add(new BasicNameValuePair("regLast", str_regLast));
                             params.add(new BasicNameValuePair("regMajor", str_regMajor));
                             params.add(new BasicNameValuePair("regPassword", str_regPassword));
-                            //params.add(new BasicNameValuePair("regGender", str_regGender));
                             params.add(new BasicNameValuePair("regGender",str_regGender));
                             params.add(new BasicNameValuePair("regUsername", str_regUsername));
+                            params.add(new BasicNameValuePair("regConfirmPass",str_regConfirmPass));
 
                             // getting JSON Object
                             // Note that create product URL accepts POST method
