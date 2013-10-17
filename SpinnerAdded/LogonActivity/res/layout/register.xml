@@ -122,6 +122,7 @@
               android:id="@+id/gender_spinner"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              android:prompt="@string/genderPrompt"
               android:entries="@array/gender"
               />
                

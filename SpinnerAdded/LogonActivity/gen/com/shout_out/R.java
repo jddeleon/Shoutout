@@ -63,6 +63,7 @@ public final class R {
         public static final int app_name=0x7f050003;
         public static final int email=0x7f050002;
         public static final int first=0x7f05000b;
+        public static final int genderPrompt=0x7f050010;
         public static final int last=0x7f05000c;
         public static final int login=0x7f050004;
         public static final int majorfield=0x7f050007;

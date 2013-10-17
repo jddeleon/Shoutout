@@ -10,9 +10,10 @@
     <string name="alreadyreg">Login Here</string>
     <string name="age">Age</string>
     <string name="ConfirmPass">Confirm Password</string>
+    <string name="genderPrompt">Gender</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
-    	<item>Decliened</item>
+    	<item>Decline to Say</item>
 	</string-array>
 </resources>

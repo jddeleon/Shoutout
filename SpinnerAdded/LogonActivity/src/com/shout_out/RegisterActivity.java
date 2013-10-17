@@ -53,6 +53,7 @@ public class RegisterActivity extends Activity {
 
         // JSON Node names
         private static final String TAG_SUCCESS = "success";
+        private static final String TAG_MESSAGE = "message";
         
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,7 +95,7 @@ public class RegisterActivity extends Activity {
  
       //------------------------------------------------------------------------
             /**
-             * Background Async Task to Create new product
+             * Background Async Task to Register a new User
              * 
              * Actually you can define this class at very end of the program by doing this
              * import com.shout_out.RegisterActivity.CreateNewUser;
@@ -145,7 +146,7 @@ public class RegisterActivity extends Activity {
                             //params.add(new BasicNameValuePair("regConfirmPass",str_regConfirmPass));
 
                             // getting JSON Object
-                            // Note that create product URL accepts POST method
+                            // NOTE: The create_user URL accepts POST method
                             JSONObject json = jsonParser.makeHttpRequest(url_create_user,
                                             "POST", params);
                             
@@ -157,14 +158,19 @@ public class RegisterActivity extends Activity {
                                     int success = json.getInt(TAG_SUCCESS);
 
                                     if (success == 1) {
-                                            // successfully created product
+                                            // successfully registered the user
+                                    		Log.d("User Registered!", json.toString());
                                             Intent Logon = new Intent(getApplicationContext(), LogonActivity.class);
                                             startActivity(Logon);
                                             
                                             // closing this screen
                                             finish();
+                                            return json.getString(TAG_MESSAGE);
                                     } else {
-                                            // failed to create product
+                      
+                                        // failed to register the user
+                                    	Log.d("Register Failure!", json.getString(TAG_MESSAGE));
+                                       	return json.getString(TAG_MESSAGE);
                                     }
                             } catch (JSONException e) {
                                     e.printStackTrace();
@@ -179,6 +185,11 @@ public class RegisterActivity extends Activity {
                     protected void onPostExecute(String file_url) {
                             // dismiss the dialog once done
                             pDialog.dismiss();
+                            
+                            // display the toast notification containing the returned JSON message
+                            if (file_url != null){
+                               	Toast.makeText(RegisterActivity.this, file_url, Toast.LENGTH_LONG).show();
+                            }
                     }
 
             }
@@ -190,7 +201,7 @@ public class RegisterActivity extends Activity {
         // button click event
              btnCreateUser.setOnClickListener(new View.OnClickListener() {
 
-                             @Override
+            	 			@Override
                              public void onClick(View view) {
                                      // creating new product in background thread
                                      new CreateNewUser().execute();
