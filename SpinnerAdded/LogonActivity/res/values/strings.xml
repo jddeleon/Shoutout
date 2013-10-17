@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Regist">Registration</string>
+    <string name="passw">Password</string>
+    <string name="email">Email</string>
+    <string name="app_name">ShoutOut</string>
+    <string name="login">Login</string>
+    <string name="savepass">Remember Password</string>
+
+</resources>
+
