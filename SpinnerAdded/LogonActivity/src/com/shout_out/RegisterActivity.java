@@ -1,6 +1,6 @@
 package com.shout_out;
 
-//import com.example.androidhive.JSONParser;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -19,7 +19,6 @@ import org.json.JSONObject;
 import com.shout_out.LogonActivity;
 import com.shout_out.RegisterActivity;
 import com.shout_out.R;
-//import com.shout_out.RegisterActivity.CreateNewUser;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -30,7 +29,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Spinner;
-//import android.widget.Toast;
+import android.widget.Toast;
 
 public class RegisterActivity extends Activity {
 
@@ -44,15 +43,16 @@ public class RegisterActivity extends Activity {
         EditText regAge;
         EditText regEmail;
         EditText regPassword;
+        EditText regConfirmPass;
         EditText regMajor;
         Spinner regGender;
-        EditText regConfirmPass;
 
         // URL to create new user
         private static String url_create_user = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/register.php";
 
         // JSON Node names
         private static final String TAG_SUCCESS = "success";
+        private static final String TAG_MESSAGE = "message";
         
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,13 +88,14 @@ public class RegisterActivity extends Activity {
         regLast = (EditText) findViewById(R.id.reg_last);
         regMajor = (EditText) findViewById(R.id.reg_major);
         regPassword = (EditText) findViewById(R.id.reg_password);
+        regConfirmPass = (EditText) findViewById(R.id.reg_confirmPass);
         regGender = (Spinner) findViewById(R.id.gender_spinner);
         regUsername = (EditText) findViewById(R.id.reg_username);
-        regConfirmPass = (EditText) findViewById(R.id.reg_confirmpass);
+ 
  
       //----------------------------------------------------------------------------------------------
             /**
-             * Background Async Task to Create new product
+             * Background Async Task to Register a new User
              * 
              * Actually you can define this class at very end of the program by doing this
              * import com.shout_out.RegisterActivity.CreateNewUser;
@@ -111,7 +112,7 @@ public class RegisterActivity extends Activity {
                     protected void onPreExecute() {
                             super.onPreExecute();
                             pDialog = new ProgressDialog(RegisterActivity.this);
-                            pDialog.setMessage("Creating User..");
+                            pDialog.setMessage("Registering User..");
                             pDialog.setIndeterminate(false);
                             pDialog.setCancelable(true);
                             pDialog.show();
@@ -127,9 +128,10 @@ public class RegisterActivity extends Activity {
                             String str_regLast = regLast.getText().toString();
                             String str_regMajor = regMajor.getText().toString();
                             String str_regPassword = regPassword.getText().toString();
+                            String str_regConfirmPass = regConfirmPass.getText().toString();
                             String str_regUsername = regUsername.getText().toString();
                             String str_regGender = regGender.getSelectedItem().toString();
-                            String str_regConfirmPass = regConfirmPass.getText().toString();
+ 
 
 
                             // Building Parameters
@@ -145,7 +147,7 @@ public class RegisterActivity extends Activity {
                             params.add(new BasicNameValuePair("regConfirmPass",str_regConfirmPass));
 
                             // getting JSON Object
-                            // Note that create product URL accepts POST method
+                            // NOTE: The create_user URL accepts POST method
                             JSONObject json = jsonParser.makeHttpRequest(url_create_user,
                                             "POST", params);
                             
@@ -157,14 +159,19 @@ public class RegisterActivity extends Activity {
                                     int success = json.getInt(TAG_SUCCESS);
 
                                     if (success == 1) {
-                                            // successfully created product
+                                            // successfully registered the user
+                                    		Log.d("User Registered!", json.toString());
                                             Intent Logon = new Intent(getApplicationContext(), LogonActivity.class);
                                             startActivity(Logon);
                                             
                                             // closing this screen
                                             finish();
+                                            return json.getString(TAG_MESSAGE);
                                     } else {
-                                            // failed to create product
+                      
+                                        // failed to register the user
+                                    	Log.d("Register Failure!", json.getString(TAG_MESSAGE));
+                                       	return json.getString(TAG_MESSAGE);
                                     }
                             } catch (JSONException e) {
                                     e.printStackTrace();
@@ -179,6 +186,11 @@ public class RegisterActivity extends Activity {
                     protected void onPostExecute(String file_url) {
                             // dismiss the dialog once done
                             pDialog.dismiss();
+                            
+                            // display the toast notification containing the returned JSON message
+                            if (file_url != null){
+                               	Toast.makeText(RegisterActivity.this, file_url, Toast.LENGTH_LONG).show();
+                            }
                     }
 
             }

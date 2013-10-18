@@ -19,7 +19,6 @@ import com.shout_out.JSONParser;
 import com.shout_out.LogonActivity;
 import com.shout_out.RegisterActivity;
 import com.shout_out.R;
-//import com.shout_out.RegisterActivity.CreateNewUser;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -30,14 +29,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Spinner;
-//import android.widget.Toast;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Set View to main.xml
+        Log.d("Main", "About to call setContentView");
         setContentView(R.layout.main);
-        
+        Log.d("Main", "About to make button logout");
         Button btnCreateUser = (Button) findViewById(R.id.btnLogout);
         
         // button click event

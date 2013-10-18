@@ -28,7 +28,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Button;
-//import android.widget.Toast;
+import android.widget.Toast;
 
 public class LogonActivity extends Activity {
 
@@ -41,6 +41,7 @@ public class LogonActivity extends Activity {
     private static String url_log_on = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/login.php";
     
     private static final String TAG_SUCCESS = "success";
+    private static final String TAG_MESSAGE = "message";
     
     
 	@Override
@@ -83,7 +84,7 @@ public class LogonActivity extends Activity {
                     params.add(new BasicNameValuePair("logPassword", str_logPassword));
                     
                     // getting JSON Object
-                    // Note that create product URL accepts POST method
+                    // Note that login URL accepts POST method
                     JSONObject json = jsonParser.makeHttpRequest(url_log_on,
                                     "POST", params);
                     
@@ -96,16 +97,25 @@ public class LogonActivity extends Activity {
 
                             if (success == 1) {
                                     // successfully log in
+                            		Log.d("Login", "About to call new Intent");
                                     Intent Main = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(Main);
+                                    Log.d("Login", "About to call startActivity(Main)");
+                                    //startActivity(Main);
+                                    Log.d("Login", "About to call finish()");
                                     
                                     // closing this screen
                                     finish();
+                                    Log.d("Login", "Just called finish()");
+									return json.getString(TAG_MESSAGE);
                             } else {
-                                    // failed to create product
+								
+                                // failed to login
+								Log.d("Login Failure!", json.getString(TAG_MESSAGE));
+                                return json.getString(TAG_MESSAGE);
                             }
-                    } catch (JSONException e) {
-                            e.printStackTrace();
+                    } 
+                    catch (JSONException e) {
+                    	e.printStackTrace();
                     }
 
                     return null;
@@ -117,6 +127,15 @@ public class LogonActivity extends Activity {
             protected void onPostExecute(String file_url) {
                     // dismiss the dialog once done
                     pDialog.dismiss();
+                    Log.d("Login", "Just dismissed dialog box");
+                    Log.d("Login", "File_url: "+file_url);
+
+                    // display the toast notification containing the returned JSON message
+                    if (file_url != null){
+                    	Log.d("Login", "About to display toast");
+                       	Toast.makeText(LogonActivity.this, file_url, Toast.LENGTH_LONG).show();
+                    }
+                    
             }
 
     }
@@ -126,14 +145,14 @@ public class LogonActivity extends Activity {
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         
         // button click event
-             btnLogin.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
 
-                             @Override
-                             public void onClick(View view) {
-                                     // creating new product in background thread
-                                     new LogOnActivity().execute();
-                             }
-                     });
+        	@Override
+        	public void onClick(View view) {
+        	
+        		new LogOnActivity().execute();
+            }
+        });
 
 	    
 	    

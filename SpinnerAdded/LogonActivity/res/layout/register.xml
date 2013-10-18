@@ -55,15 +55,6 @@
                 android:singleLine="true"
                 android:layout_marginTop="5dip"
                 android:layout_marginBottom="20dip"/>
-          
-          <EditText 
-              	android:id="@+id/reg_age"
-          		android:hint="@string/age"
-          		android:layout_width="fill_parent"
-          		android:layout_height="wrap_content"
-       			android:singleLine="true"
-       			android:layout_marginTop="5dip"
-       			android:layout_marginBottom="20dip"/>
         
           <!--  Email -->
           
@@ -90,14 +81,17 @@
                 android:layout_marginBottom="20dip"/>
           
 <!-- Confirm Password -->
-          <EditText android:id="@+id/reg_confirmpass"
-              	android:hint="@string/ConfirmPass"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:inputType="textPassword"
-                android:layout_marginTop="5dip"
-                android:layout_marginBottom="20dip"/> 
+
+          <EditText
+              android:id="@+id/reg_confirmPass"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="20dip"
+              android:layout_marginTop="5dip"
+              android:hint="@string/confirmPass"
+              android:inputType="textPassword"
+              android:singleLine="true" />
+ 
           <!--Major  -->
           <EditText android:id="@+id/reg_major"
               	android:hint="@string/majorfield"
@@ -115,6 +109,19 @@
                  
 		  <!-- Gender -->
           <!--Make seletion between Male and female instead of input  -->
+
+          <EditText
+              android:id="@+id/reg_age"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="20dip"
+              android:layout_marginTop="5dip"
+              android:ems="10"
+              android:hint="@string/age"
+              android:singleLine="true" >
+
+              <requestFocus />
+          </EditText>
 
           <Spinner
               android:id="@+id/gender_spinner"
