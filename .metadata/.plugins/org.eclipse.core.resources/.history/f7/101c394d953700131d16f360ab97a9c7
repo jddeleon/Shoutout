@@ -95,7 +95,7 @@ public class LogonActivity extends Activity {
                             int success = json.getInt(TAG_SUCCESS);
 
                             if (success == 1) {
-                                    // successfully log in
+                                    // successfully created product
                                     Intent Main = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(Main);
                                     
@@ -122,32 +122,16 @@ public class LogonActivity extends Activity {
     }
 	    
 	  //----------------------------------------------------------------------------------------------
-	    // Create button
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
-        
-        // button click event
-             btnLogin.setOnClickListener(new View.OnClickListener() {
-
-                             @Override
-                             public void onClick(View view) {
-                                     // creating new product in background thread
-                                     new LogOnActivity().execute();
-                             }
-                     });
-
-	    
-	    
-	    
-	    TextView registerScreen = (TextView) findViewById(R.id.btnlink_to_register);
-		
+		TextView registerScreen = (TextView) findViewById(R.id.btnlink_to_register);
+	
         registerScreen.setOnClickListener(new View.OnClickListener() {
         	    public void onClick(View v) {
                 //Switching to Register screen
                 Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(i);
-                }
-        	    });
-        }
+            }
+        });
+    }
 
 
 	@Override
