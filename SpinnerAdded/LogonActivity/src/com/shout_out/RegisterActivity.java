@@ -1,6 +1,6 @@
 package com.shout_out;
 
-
+//import com.example.androidhive.JSONParser;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import org.json.JSONObject;
 import com.shout_out.LogonActivity;
 import com.shout_out.RegisterActivity;
 import com.shout_out.R;
+//import com.shout_out.RegisterActivity.CreateNewUser;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -59,7 +60,7 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         // Set View to register.xml
         setContentView(R.layout.register);
-      //----------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------
         Spinner genderselect= (Spinner) findViewById(R.id.gender_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.gender, android.R.layout.simple_list_item_1);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -80,7 +81,7 @@ public class RegisterActivity extends Activity {
                     }
 
         });
-      //----------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------
         
         regAge = (EditText) findViewById(R.id.reg_age);
         regEmail = (EditText) findViewById(R.id.reg_email);
@@ -91,9 +92,9 @@ public class RegisterActivity extends Activity {
         regConfirmPass = (EditText) findViewById(R.id.reg_confirmPass);
         regGender = (Spinner) findViewById(R.id.gender_spinner);
         regUsername = (EditText) findViewById(R.id.reg_username);
+        //regConfirmPass = (EditText) findViewById(R.id.reg_confirmpass);
  
- 
-      //----------------------------------------------------------------------------------------------
+      //------------------------------------------------------------------------
             /**
              * Background Async Task to Register a new User
              * 
@@ -112,7 +113,7 @@ public class RegisterActivity extends Activity {
                     protected void onPreExecute() {
                             super.onPreExecute();
                             pDialog = new ProgressDialog(RegisterActivity.this);
-                            pDialog.setMessage("Registering User..");
+                            pDialog.setMessage("Creating User..");
                             pDialog.setIndeterminate(false);
                             pDialog.setCancelable(true);
                             pDialog.show();
@@ -145,6 +146,9 @@ public class RegisterActivity extends Activity {
                             params.add(new BasicNameValuePair("regGender",str_regGender));
                             params.add(new BasicNameValuePair("regUsername", str_regUsername));
                             params.add(new BasicNameValuePair("regConfirmPass",str_regConfirmPass));
+                            Log.d("Gender", "Value : " + str_regGender);
+                            Log.d("Major", "Value: " + str_regMajor);
+                            Log.d("Age", "Value: " + str_regAge);
 
                             // getting JSON Object
                             // NOTE: The create_user URL accepts POST method
@@ -194,7 +198,7 @@ public class RegisterActivity extends Activity {
                     }
 
             }
-          //----------------------------------------------------------------------------------------------
+             //------------------------------------------------------------------------
         
         // Create button
         Button btnCreateUser = (Button) findViewById(R.id.btnRegister);
@@ -202,7 +206,7 @@ public class RegisterActivity extends Activity {
         // button click event
              btnCreateUser.setOnClickListener(new View.OnClickListener() {
 
-                             @Override
+            	 			@Override
                              public void onClick(View view) {
                                      // creating new product in background thread
                                      new CreateNewUser().execute();
@@ -216,7 +220,7 @@ public class RegisterActivity extends Activity {
         loginScreen.setOnClickListener(new View.OnClickListener() {
                 
             public void onClick(View arg0) {
-                // Closing registration screen
+                 // Closing registration screen
                 // Switching to Login Screen/closing register screen
                 finish();
             }

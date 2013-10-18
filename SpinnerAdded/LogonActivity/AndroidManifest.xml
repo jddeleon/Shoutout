@@ -27,6 +27,11 @@
             android:label="@string/Register">
             
         </activity>
+        <activity
+            android:name="com.shout_out.MainActivity"
+            android:label="@string/Main">
+            
+        </activity>
     </application>
     
     <!--  Internet Permissions -->

@@ -100,7 +100,7 @@ public class LogonActivity extends Activity {
                             		Log.d("Login", "About to call new Intent");
                                     Intent Main = new Intent(getApplicationContext(), MainActivity.class);
                                     Log.d("Login", "About to call startActivity(Main)");
-                                    //startActivity(Main);
+                                    startActivity(Main);
                                     Log.d("Login", "About to call finish()");
                                     
                                     // closing this screen

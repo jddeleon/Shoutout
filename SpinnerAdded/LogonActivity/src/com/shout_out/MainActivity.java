@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import com.shout_out.JSONParser;
 import com.shout_out.LogonActivity;
 import com.shout_out.RegisterActivity;
+import com.shout_out.MainActivity;
 import com.shout_out.R;
 
 import android.content.Intent;
