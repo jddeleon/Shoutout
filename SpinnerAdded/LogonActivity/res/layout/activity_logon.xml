@@ -43,6 +43,7 @@
           android:layout_below="@id/header">
           <!--  Email -->
              <EditText 
+                android:id="@+id/log_email"
               	android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
@@ -53,6 +54,7 @@
                 android:singleLine="true"/>
           <!--  Password -->
           <EditText 
+                android:id="@+id/log_password"
               	android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/passw"

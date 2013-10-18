@@ -27,8 +27,7 @@
           android:layout_height="wrap_content"
           android:padding="10dip"
           android:layout_below="@id/header">
-          <!-- First Name -->
-            
+          <!-- First Name -->            
           <EditText android:id="@+id/reg_first"
               	android:hint="@string/first"
                 android:layout_width="fill_parent"
@@ -56,6 +55,15 @@
                 android:singleLine="true"
                 android:layout_marginTop="5dip"
                 android:layout_marginBottom="20dip"/>
+          
+          <EditText 
+              	android:id="@+id/reg_age"
+          		android:hint="@string/age"
+          		android:layout_width="fill_parent"
+          		android:layout_height="wrap_content"
+       			android:singleLine="true"
+       			android:layout_marginTop="5dip"
+       			android:layout_marginBottom="20dip"/>
         
           <!--  Email -->
           
@@ -70,44 +78,18 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"/>
           <!-- Password -->
-
+          
           <EditText
-              android:id="@+id/reg_password"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="20dip"
-              android:layout_marginTop="5dip"
-              android:ems="10"
-              android:hint="@string/Pass"
-              android:inputType="textPassword"
-              android:singleLine="true" />
-
-          <EditText
-              android:id="@+id/reg_confirmPass"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="20dip"
-              android:layout_marginTop="5dip"
-              android:ems="10"
-              android:hint="@string/ConfirmPass"
-              android:inputType="textPassword"
-              android:singleLine="true" />
-
-          <EditText
-              android:id="@+id/reg_age"
-              android:layout_width="fill_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="20dip"
-              android:layout_marginTop="5dip"
-              android:ems="10"
-              android:hint="@string/age"
-              android:singleLine="true" >
-
-              <requestFocus />
-          </EditText>
+              	android:id="@+id/reg_password"
+              	android:hint="@string/Pass"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:layout_marginTop="5dip"
+                android:layout_marginBottom="20dip"/>
           
 <!-- Confirm Password -->
-          <!--  
           <EditText android:id="@+id/reg_confirmpass"
               	android:hint="@string/ConfirmPass"
                 android:layout_width="fill_parent"
@@ -116,7 +98,6 @@
                 android:inputType="textPassword"
                 android:layout_marginTop="5dip"
                 android:layout_marginBottom="20dip"/> 
-                -->
           <!--Major  -->
           <EditText android:id="@+id/reg_major"
               	android:hint="@string/majorfield"
@@ -139,7 +120,6 @@
               android:id="@+id/gender_spinner"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:prompt="@string/genderPrompt"
               android:entries="@array/gender"
               />
                

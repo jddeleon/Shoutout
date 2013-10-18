@@ -3,7 +3,6 @@
     <string name="name">Full Name</string>
     <string name="majorfield">Major</string>
     <string name="Pass">Password</string>
-    <string name="confirmPass">Confirm Password</string>
     <string name="Usern">Username</string>
     <string name="Register">Register</string>
     <string name="first">First Name</string>
@@ -11,10 +10,9 @@
     <string name="alreadyreg">Login Here</string>
     <string name="age">Age</string>
     <string name="ConfirmPass">Confirm Password</string>
-    <string name="genderPrompt">Gender</string>
     <string-array name="gender">
         <item>Male</item>
         <item>Female</item>
-    	<item>Decline to Say</item>
+    	<item>Decliened</item>
 	</string-array>
 </resources>

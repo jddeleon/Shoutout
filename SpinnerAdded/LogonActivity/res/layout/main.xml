@@ -7,7 +7,7 @@
     <TextView 
         	  android:layout_width="fill_parent"
               android:layout_height="wrap_content"
-              android:text="@string/welcome"
+              android:text="@string/Welcome"
               android:textSize="40sp"
               android:gravity="center"
               android:layout_marginTop="20dip"/>

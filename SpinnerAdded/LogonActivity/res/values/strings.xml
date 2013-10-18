@@ -6,6 +6,8 @@
     <string name="app_name">ShoutOut</string>
     <string name="login">Login</string>
     <string name="savepass">Remember Password</string>
+    <string name="Welcome">Welcome</string>
+    <string name="logout">Sign out</string>
 
 </resources>
 
