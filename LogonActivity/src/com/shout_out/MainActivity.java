@@ -44,6 +44,11 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			// Getting GoogleMap object from the fragment
 			googleMap = fm.getMap();
 			
+			// This is a hard coded location marker, remove when finish dynamic marker
+			googleMap.addMarker(new MarkerOptions()  
+	        .position(new LatLng(39.74, -121.85))  
+	        .title("Hello world")); 
+			
 			// Enabling MyLocation Layer of Google Map
 			googleMap.setMyLocationEnabled(true);				
 					
