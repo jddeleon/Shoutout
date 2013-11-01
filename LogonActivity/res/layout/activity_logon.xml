@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:fillViewport="true">
+  <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:background="#ffffff">
+ 
+        <!--  Header -->
+        <LinearLayout 
+            android:id="@+id/header"
+    		android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+    		android:background="@layout/header"
+    		android:paddingTop="5dip"
+    		android:paddingBottom="5dip">
+        	<!-- Logo -->
+        	<ImageView 
+        	    android:contentDescription="@drawable/ic_launcher"
+            	android:layout_width="wrap_content"
+            	android:layout_height="wrap_content"
+            	android:layout_marginLeft="10dip"/>
+		</LinearLayout>
+ 
+        <!-- Footer -->
+        <LinearLayout 
+        	android:orientation="vertical"
+        	android:id="@+id/footer"
+   	 		android:layout_width="fill_parent"
+    		android:layout_height="90dip"
+    		android:background="@layout/footers"
+    		android:layout_alignParentBottom="true">
+		</LinearLayout>
+
+        <!-- Login Form -->
+       <LinearLayout
+          android:orientation="vertical"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="10dip"
+          android:layout_below="@id/header">
+          <!--  Email -->
+             <EditText 
+                android:id="@+id/log_email"
+              	android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:layout_marginTop="5dip"
+                android:layout_marginBottom="20dip"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:singleLine="true"/>
+          <!--  Password -->
+          <EditText 
+                android:id="@+id/log_password"
+              	android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/passw"
+                android:layout_marginTop="5dip"
+                android:singleLine="true"
+                android:inputType="textPassword"
+                android:maxLines="1"/>
+          <!-- Login button -->
+          
+          <CheckBox 
+              	android:id="@+id/checkbox"
+              	android:layout_width="fill_parent"
+              	android:layout_height="wrap_content"
+              	android:checked="false"
+              	android:text="@string/savepass"
+              
+              
+              />
+          <Button 
+              	android:id="@+id/btnLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="@string/login"/>
+          <!-- Link to Registration Screen -->
+
+          <Button
+              android:id="@+id/btnlink_to_register"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="40dip"
+              android:layout_marginTop="10dip"
+              android:gravity="center"
+              android:text="@string/Regist"
+              android:textColor="#0b84aa"
+              />
+ 
+</LinearLayout>
+        
+ 
+  </RelativeLayout>
+</ScrollView>
