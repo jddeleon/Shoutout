@@ -1,6 +1,7 @@
 package com.shout_out;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -14,8 +15,11 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends FragmentActivity implements LocationListener {
 
@@ -44,10 +48,26 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			// Getting GoogleMap object from the fragment
 			googleMap = fm.getMap();
 			
-			// This is a hard coded location marker, remove when finish dynamic marker
 			googleMap.addMarker(new MarkerOptions()  
 	        .position(new LatLng(39.74, -121.85))  
-	        .title("Hello world")); 
+	        .title("CSU, Chico")
+	        .snippet("Population: 137,400")); 
+			
+			googleMap.addMarker(new MarkerOptions()
+            .position(new LatLng(39.74, -121.85)).title("CSU, Chico")
+            .snippet("Population: 137,400")
+            .draggable(true));
+			
+			googleMap.setOnInfoWindowClickListener(
+				new OnInfoWindowClickListener(){
+					public void onInfoWindowClick(Marker marker){
+						Intent Logon = new Intent(getApplicationContext(), LogonActivity.class);
+						startActivity(Logon);    
+						// closing this screen
+						finish();
+					}
+				}
+			);
 			
 			// Enabling MyLocation Layer of Google Map
 			googleMap.setMyLocationEnabled(true);				
