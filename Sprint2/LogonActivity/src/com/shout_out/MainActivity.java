@@ -1,5 +1,8 @@
 package com.shout_out;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,7 +59,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
         }else {	// Google Play Services are available	
         	
         	// used to be like "private static final" need research about it
-        	final String url_get_data = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/register.php";
+        	/*final String url_get_data = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/register.php";
         	final JSONParser jsonParser = new JSONParser();
 
         	double latitude;
@@ -86,7 +89,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
                 /**
                  * Getting data
                  * */
-                protected String doInBackground(String... args) {
+              /*  protected String doInBackground(String... args) {
 
                         // getting JSON Object
                         JSONObject json = jsonParser.getHttpRequest(url_get_data);
@@ -141,7 +144,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 
                         return null;
                 }
-        	}
+        	}*/
         	
         	
         	
@@ -151,17 +154,20 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			
 			// Getting GoogleMap object from the fragment
 			googleMap = fm.getMap();
-
-			double[] lat = new double[47];
-			double[] lng = new double[47];
-			String[] lobby = new String[47];
+			final Map<Marker, Class> allMarkersMap = new HashMap<Marker, Class>();
+			double[] lat = new double[48];
+			double[] lng = new double[48];
+			String[] lobby = new String[48];
+			Class[] c = new Class[48];
 			
 			lobby[1] = "Softball Diamond";
 			lat[1] =  39.731170;
 			lng [1] = -121.854257;
+			c[1] = LogonActivity.class;
 			lobby[2] = "Soccer Stadium";
 			lat[2] =   39.731988;
 			lng [2] = -121.853761;
+			c[2] = RegisterActivity.class;
 			lobby[3] = "Residence Halls: Esken, Konkow, Mechoopda";
 			lat[3] =  39.732346;
 			lng [3] = -121.852902;
@@ -297,30 +303,28 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			lobby[47] = "Aymer J. Hamilton Bldg.";
 			lat[47] = 39.733145;
 			lng [47] = -121.845217;
-
+			Marker marker[] = new Marker[48];
 			
-			for (int i = 1; i <= 5; i++){
+			for (int i = 1; i <= 2; i++){
 				// Add Marker
-				googleMap.addMarker(new MarkerOptions()  
+				marker[i] = googleMap.addMarker(new MarkerOptions()  
 	            .position(new LatLng(lat[i], lng[i]))  
 	            .title(lobby[i])
 	            .snippet("Population: 137,400")); 
+				allMarkersMap.put(marker[i], c[i]);        
 	                    
-	            googleMap.addMarker(new MarkerOptions()
-	            .position(new LatLng(lat[i], lng[i])).title(lobby[i])
-	            .snippet("Population: 137,400")
-	            .draggable(true));
-	                    
-	            googleMap.setOnInfoWindowClickListener(
-	           	new OnInfoWindowClickListener(){
-	           		public void onInfoWindowClick(Marker marker){
-	               	Intent Logon = new Intent(getApplicationContext(), LogonActivity.class);
-	               	startActivity(Logon);    
-	               	// closing this screen
-	              	finish();
-	           		}
-	        	});
 			}
+			
+            googleMap.setOnInfoWindowClickListener(
+           	new OnInfoWindowClickListener(){
+           		public void onInfoWindowClick(Marker marker){
+           		Class cls = allMarkersMap.get(marker);
+               	Intent Logon = new Intent(getApplicationContext(), cls);
+               	startActivity(Logon);    
+               	// closing this screen
+              	finish();
+           		}
+        	});
 
 			
 			// Enabling MyLocation Layer of Google Map
