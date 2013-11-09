@@ -9,9 +9,10 @@
     <string name="Welcome">Welcome</string>
     <string name="logout">Sign out</string>
     <string name="Main">Main</string>
-    <string name="app_name">MyLocation</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="shoutwall">Shout Wall</string>
+    <string name="btnPost">Post to Wall</string>
 
 </resources>
 

@@ -3,20 +3,15 @@ package com.shout_out;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.widget.TextView;
 
@@ -26,13 +21,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import com.shout_out.LogonActivity;
-import com.shout_out.MainActivity;
-import com.shout_out.R;
 
 public class MainActivity extends FragmentActivity implements LocationListener {
 
@@ -304,14 +297,22 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			lat[47] = 39.733145;
 			lng [47] = -121.845217;
 			Marker marker[] = new Marker[48];
+			Circle circle[] = new Circle[48];
 			
-			for (int i = 1; i <= 2; i++){
+			for (int i = 1; i <= 47; i++){
 				// Add Marker
 				marker[i] = googleMap.addMarker(new MarkerOptions()  
 	            .position(new LatLng(lat[i], lng[i]))  
 	            .title(lobby[i])
-	            .snippet("Population: 137,400")); 
-				allMarkersMap.put(marker[i], c[i]);        
+	            .snippet("Lobby Population: 0")); 
+				allMarkersMap.put(marker[i], c[i]);
+				
+				circle[i] = googleMap.addCircle(new CircleOptions()
+				.center(new LatLng(lat[i], lng[i]))
+				.radius(30)
+				.fillColor(0x40ff0000)
+				.strokeColor(Color.TRANSPARENT)
+				.strokeWidth(2));
 	                    
 			}
 			
