@@ -1,6 +1,7 @@
 package com.shout_out;
 
 //import com.example.androidhive.JSONParser;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -60,6 +61,7 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         // Set View to register.xml
         setContentView(R.layout.register);
+        getActionBar().hide();
 //---------------------------------------------------------------------------------------------------------------------------------------
         Spinner genderselect= (Spinner) findViewById(R.id.gender_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.gender, android.R.layout.simple_list_item_1);

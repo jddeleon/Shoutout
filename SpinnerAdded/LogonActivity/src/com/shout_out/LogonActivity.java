@@ -1,6 +1,7 @@
 package com.shout_out;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
@@ -48,7 +49,7 @@ public class LogonActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_logon);
-		
+	    		
 	    logEmail = (EditText) findViewById(R.id.log_email);
 	    logPassword = (EditText) findViewById(R.id.log_password);
 
@@ -169,11 +170,12 @@ public class LogonActivity extends Activity {
         }
 
 
-	@Override
+	/*@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.logon, menu);
 		return true;
-	}
-
+	}*/
+	
+	
 }

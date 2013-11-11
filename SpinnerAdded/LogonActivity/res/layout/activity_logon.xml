@@ -25,14 +25,7 @@
 		</LinearLayout>
  
         <!-- Footer -->
-        <LinearLayout 
-        	android:orientation="vertical"
-        	android:id="@+id/footer"
-   	 		android:layout_width="fill_parent"
-    		android:layout_height="90dip"
-    		android:background="@layout/footers"
-    		android:layout_alignParentBottom="true">
-		</LinearLayout>
+       
 
         <!-- Login Form -->
        <LinearLayout

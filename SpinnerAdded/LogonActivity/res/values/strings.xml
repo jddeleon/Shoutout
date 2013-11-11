@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="Regist">Registration</string>
+     <string name="Regist">Registration</string>
     <string name="passw">Password</string>
     <string name="email">Email</string>
     <string name="app_name">ShoutOut</string>
@@ -9,6 +9,9 @@
     <string name="Welcome">Welcome</string>
     <string name="logout">Sign out</string>
     <string name="Main">Main</string>
-
+    <string name="userlist">userlist</string>
+    <string name="settings">settings</string>
+    <string name="waitinglocation">Waiting for location...</string>
+    <string name="UserLobby">UserList</string>
 </resources>
 
