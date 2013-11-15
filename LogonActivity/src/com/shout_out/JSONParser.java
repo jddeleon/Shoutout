@@ -32,7 +32,7 @@ public class JSONParser {
 	public JSONParser() {
 
 	}
-
+	
     public JSONObject getJSONFromUrl(final String url) {
 
         // Making HTTP request
@@ -89,7 +89,51 @@ public class JSONParser {
         return jObj;
 
     }
-    
+    // new Get method need test
+	public JSONObject getHttpRequest(String url) {
+
+		// Making HTTP request
+		try {
+				// request method is GET
+				DefaultHttpClient httpClient = new DefaultHttpClient();
+				HttpGet httpGet = new HttpGet(url);
+
+				HttpResponse httpResponse = httpClient.execute(httpGet);
+				HttpEntity httpEntity = httpResponse.getEntity();
+				is = httpEntity.getContent();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		try {
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					is, "iso-8859-1"), 8);
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			is.close();
+			json = sb.toString();
+		} catch (Exception e) {
+			Log.e("Buffer Error", "Error converting result " + e.toString());
+		}
+
+		// try parse the string to a JSON object
+		try {
+			jObj = new JSONObject(json);
+		} catch (JSONException e) {
+			Log.e("JSON Parser", "Error parsing data " + e.toString());
+		}
+
+		// return JSON String
+		return jObj;
+
+	}
     
     
 	// function get json from url
@@ -99,7 +143,10 @@ public class JSONParser {
 
 		// Making HTTP request
 		try {
-			
+			/*
+			 * GET is idempotent: it is for obtaining a resource, without changing anything on the server. As a consequence it should be perfectly safe to resubmit a GET request.
+				POST is not: it is for updating information on the server. It can therefore not be assumed that it is safe to re-submit the request which is why most browsers ask for confirmation when you hit refresh on a POST request.
+				In terms of security, no difference. POST is more obscure, perhaps, but that's a very different thing. Security needs to be added at another layer, for example SSL.*/
 			// check for request method
 			if(method == "POST"){
 				// request method is POST
