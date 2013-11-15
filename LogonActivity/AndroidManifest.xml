@@ -22,6 +22,7 @@
 	<uses-feature
   		android:glEsVersion="0x00020000"
   		android:required="true"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     
     <application
         android:allowBackup="true"
@@ -50,6 +51,7 @@
         <meta-data
     		android:name="com.google.android.maps.v2.API_KEY"
     		android:value="AIzaSyBwSi2J0PCLoBAkm0_2mOQbJsYHqG55EOg"/>
+        <meta-data android:value="@integer/google_play_services_version" android:name="com.google.android.gms.version"/>
         
     </application>
     

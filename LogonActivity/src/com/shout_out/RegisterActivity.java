@@ -154,6 +154,7 @@ public class RegisterActivity extends Activity {
                             // NOTE: The create_user URL accepts POST method
                             JSONObject json = jsonParser.makeHttpRequest(url_create_user,
                                             "POST", params);
+
                             
                             // check log cat for response
                             Log.d("Create Response", json.toString());
@@ -180,6 +181,7 @@ public class RegisterActivity extends Activity {
                             } catch (JSONException e) {
                                     e.printStackTrace();
                             }
+                            
 
                             return null;
                     }
