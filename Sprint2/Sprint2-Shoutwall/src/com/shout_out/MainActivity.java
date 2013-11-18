@@ -116,11 +116,11 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			
 			// iterate through lobbyList and place markers on map
 			//Iterator itList = lobbyList.iterator();
-			Log.d("Lobby", "About to Enter outer for loop");
+			Log.d("Lobby", "About to Enter for loop");
 			int count = lobbyList.size();
 			
 			for (int i=0; i < count; i++){
-				Log.d("Lobby", "Inside outer for loop");
+				Log.d("Lobby", "Inside for loop");
 				HashMap<String, String> lobbyMap = lobbyList.get(i);
 
 				String id = lobbyMap.get(TAG_ID);
