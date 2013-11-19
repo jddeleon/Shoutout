@@ -28,7 +28,7 @@ try
         $stmt->execute();
         while ($stmt->fetch())
         {        
-                $userArray[] = array("shout"=>$shout);
+                $shoutArray[] = array("shout"=>$shout);
                 $rowCount += 1;
         }
         $stmt->close();
