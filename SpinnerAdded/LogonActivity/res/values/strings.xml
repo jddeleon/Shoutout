@@ -13,7 +13,8 @@
     <string name="settings">settings</string>
     <string name="waitinglocation">Waiting for location...</string>
     <string name="UserLobby">UserList</string>
-    <string name="username">Username:</string>
-    <string name="message">messages:</string>
+    <string name="username">Username</string>
+    <string name="shout">shout</string>
+    <string name="timestamp">timestamp</string>
 </resources>
 

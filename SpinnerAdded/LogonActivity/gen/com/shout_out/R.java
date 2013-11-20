@@ -24,18 +24,21 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int hoveruser_gradientlist=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int stockimage=0x7f020002;
-        public static final int user_gradientlist=0x7f020003;
-        public static final int userlist=0x7f020004;
+        public static final int goatee=0x7f020000;
+        public static final int hoveruser_gradientlist=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int shoutlauncher=0x7f020003;
+        public static final int shoutmusic=0x7f020004;
+        public static final int snowb=0x7f020005;
+        public static final int stockimage=0x7f020006;
+        public static final int user_gradientlist=0x7f020007;
+        public static final int userlist=0x7f020008;
     }
     public static final class id {
         public static final int btnLogin=0x7f090004;
         public static final int btnRegister=0x7f090014;
         public static final int btnlink_to_login=0x7f090015;
         public static final int btnlink_to_register=0x7f090005;
-        public static final int chatET=0x7f090018;
         public static final int checkbox=0x7f090003;
         public static final int gender_spinner=0x7f090013;
         public static final int genderlist=0x7f09000a;
@@ -45,10 +48,9 @@ public final class R {
         public static final int listMessages=0x7f090016;
         public static final int log_email=0x7f090001;
         public static final int log_password=0x7f090002;
-        public static final int logout=0x7f09001d;
+        public static final int logout=0x7f09001f;
         public static final int major=0x7f090009;
-        public static final int menu_editprofile=0x7f09001c;
-        public static final int msg=0x7f09001b;
+        public static final int menu_editprofile=0x7f09001e;
         public static final int reg_age=0x7f090012;
         public static final int reg_confirmPass=0x7f090010;
         public static final int reg_email=0x7f09000e;
@@ -58,10 +60,14 @@ public final class R {
         public static final int reg_password=0x7f09000f;
         public static final int reg_username=0x7f09000d;
         public static final int sendBtn=0x7f090019;
-        public static final int settings=0x7f09001e;
+        public static final int settings=0x7f090020;
+        public static final int shout_get=0x7f09001b;
+        public static final int shout_msg=0x7f09001d;
+        public static final int shout_post=0x7f090018;
         public static final int thumbnail=0x7f090006;
+        public static final int timestamp=0x7f09001c;
         public static final int user=0x7f090008;
-        public static final int userwall=0x7f09001a;
+        public static final int wall_user=0x7f09001a;
     }
     public static final class layout {
         public static final int activity_logon=0x7f030000;
@@ -78,28 +84,29 @@ public final class R {
     }
     public static final class string {
         public static final int Main=0x7f050008;
-        public static final int Pass=0x7f050011;
+        public static final int Pass=0x7f050012;
         public static final int Regist=0x7f050000;
-        public static final int Register=0x7f050014;
+        public static final int Register=0x7f050015;
         public static final int UserLobby=0x7f05000c;
-        public static final int Usern=0x7f050013;
+        public static final int Usern=0x7f050014;
         public static final int Welcome=0x7f050006;
-        public static final int age=0x7f050018;
-        public static final int alreadyreg=0x7f050017;
+        public static final int age=0x7f050019;
+        public static final int alreadyreg=0x7f050018;
         public static final int app_name=0x7f050003;
-        public static final int confirmPass=0x7f050012;
+        public static final int confirmPass=0x7f050013;
         public static final int email=0x7f050002;
-        public static final int first=0x7f050015;
-        public static final int genderPrompt=0x7f050019;
-        public static final int last=0x7f050016;
+        public static final int first=0x7f050016;
+        public static final int genderPrompt=0x7f05001a;
+        public static final int last=0x7f050017;
         public static final int login=0x7f050004;
         public static final int logout=0x7f050007;
-        public static final int majorfield=0x7f050010;
-        public static final int message=0x7f05000e;
-        public static final int name=0x7f05000f;
+        public static final int majorfield=0x7f050011;
+        public static final int name=0x7f050010;
         public static final int passw=0x7f050001;
         public static final int savepass=0x7f050005;
         public static final int settings=0x7f05000a;
+        public static final int shout=0x7f05000e;
+        public static final int timestamp=0x7f05000f;
         public static final int userlist=0x7f050009;
         public static final int username=0x7f05000d;
         public static final int waitinglocation=0x7f05000b;

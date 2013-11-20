@@ -22,9 +22,10 @@ import android.widget.TextView;
 public class UserLazyList extends ListActivity{
     
     // url to make request
-    private static String url = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/get_all_users.php";
+    private static String url = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/get_lobby_users.php";
     
     // JSON Node names
+    //private static final String TAG_LOBBY = "lobbies";
     private static final String TAG_USERS = "users";
     private static final String TAG_ID = "userId";
     private static final String TAG_NAME = "fName";
