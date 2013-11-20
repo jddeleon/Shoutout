@@ -2,67 +2,67 @@ package com.shout_out;
 
 import java.util.ArrayList;
 import java.util.HashMap;
- 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-public class UserLazyList extends ListActivity{
+public class ShoutWallList extends ListActivity{
     
     // url to make request
-    private static String url = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/get_all_users.php";
+    private static String url = "";
     
-    // JSON Node names
     private static final String TAG_USERS = "users";
-    private static final String TAG_ID = "userId";
-    private static final String TAG_NAME = "fName";
-    private static final String TAG_LNAME = "lName";
     private static final String TAG_USERNAME = "username";
-    private static final String TAG_EMAIL = "email";
-    private static final String TAG_MAJOR = "major";
-    private static final String TAG_GENDER = "gender";
-    private static final String TAG_AGE = "age";
-    private static final String TAG_THUMBURL = "thumbUrl";
-   
-    
+    private static final String TAG_MSG="messages";
+
     // new JSON Parser instance
     JSONParser jParser = new JSONParser();
     
-    ArrayList<HashMap<String, String>> usersList;
+    ArrayList<HashMap<String, String>> wallList;
     
     //JSONArray
-    JSONArray users = null;
+    JSONArray wall_users = null;
     
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list);
+        setContentView(R.layout.shoutwall);
     
          // Hashmap for ListView
-        usersList = new ArrayList<HashMap<String, String>>();
+        wallList = new ArrayList<HashMap<String, String>>();
         
-        //Execute Loadusers AsyncTask in background for list
-        new LoadUsers().execute();
-            
+        //Execute Loadusers in wall AsyncTask in background for list
+        new LoadW_Users().execute();
         
+        // Create button
+        Button btnPost = (Button) findViewById(R.id.sendBtn);
+        
+        // button click event
+        btnPost.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                new LoadW_Users().execute();
+                Intent i = new Intent(getApplicationContext(), ShoutWallList.class);
+                startActivity(i);
+            }
+        });
 
     }
     
-    
-    
-    class LoadUsers extends AsyncTask<String, String, String> {
+    class LoadW_Users extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... params) {
@@ -72,29 +72,26 @@ public class UserLazyList extends ListActivity{
             
             try {
                 // Getting User Arrays
-                   users = json.getJSONArray(TAG_USERS);
+                   wall_users = json.getJSONArray(TAG_USERS);
                    
                 // looping through All Contacts
-                   for(int i = 0; i < users.length(); i++){
-                       JSONObject u = users.getJSONObject(i);
+                   for(int i = 0; i < wall_users.length(); i++){
+                       JSONObject w = wall_users.getJSONObject(i);
                         
                        // Storing each json item in variable
-                       String id = u.getString(TAG_ID);
-                       String name = u.getString(TAG_NAME);
-                       String major = u.getString(TAG_MAJOR);
-                       String age = u.getString(TAG_AGE);
+                       String username = w.getString(TAG_USERNAME);
+                       String message = w.getString(TAG_MSG);
+                       
                        
                        // creating new HashMap
                        HashMap<String, String> map = new HashMap<String, String>();
                        
                        // adding each child node to HashMap key => value
-                       map.put(TAG_ID, id);
-                       map.put(TAG_NAME, name);
-                       map.put(TAG_MAJOR, major);
-                       map.put(TAG_AGE, age);
+                       map.put(TAG_USERNAME, username);
+                       map.put(TAG_MSG, message);
                        
                        //adding HashList to ArrayList
-                       usersList.add(map);
+                       wallList.add(map);
                        }
                      } catch (JSONException e) {
                            e.printStackTrace();
@@ -109,13 +106,16 @@ public class UserLazyList extends ListActivity{
             runOnUiThread(new Runnable() {
                 public void run() {
                     //Updating parsed JSON data into ListView
-                    ListAdapter lazyadapter = new SimpleAdapter(UserLazyList.this, usersList,R.layout.listview,new String[] { TAG_NAME, TAG_MAJOR, TAG_AGE }, new int[] {R.id.user, R.id.major, R.id.genderlist });
-                    setListAdapter(lazyadapter);                    
+                    ListAdapter walladapter = new SimpleAdapter(ShoutWallList.this,wallList,R.layout.wallview,new String[] { TAG_USERNAME, TAG_MSG }, new int[] {R.id.userwall, R.id.msg });
+                    setListAdapter(walladapter);                    
                 }
             });
 
         }
    
     }
-             
-}                      
+    
+    
+    
+
+}
