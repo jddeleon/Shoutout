@@ -2,8 +2,12 @@ package com.shout_out;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,8 +44,11 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 	
 	boolean MUTEX_LOCK = false;
     
-    // url to make request
-    private static String url = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/get_lobby_list.php";
+	
+    // url to make requests
+    private static String urlGetLobbyList = "http://www.ecst.csuchico.edu/~jdeleon/shoutout/get_lobby_list.php";
+    private static String urlGetLobbyPopulation =  "http://www.ecst.csuchico.edu/~jdeleon/shoutout/get_lobby_user_ct.php";
+    
     
     // JSON Node names
     private static final String TAG_LOBBIES = "lobbies";
@@ -54,15 +61,18 @@ public class MainActivity extends FragmentActivity implements LocationListener {
     private static final String TAG_LNG = "lng";
     private static final String TAG_RAD = "rad";
     private static final String TAG_THUMB = "thumb_url";
+    private static final String TAG_POPULATION = "numUsers";
     
     // new JSON Parser instance
     JSONParser jParser = new JSONParser();
+    JSONParser jParser2 = new JSONParser();
     
-    // might not need this. come back to it later
+    // ArrayList contains a Hashmap of lobbies
     ArrayList<HashMap<String, String>> lobbyList;
     
     //JSONArray
     JSONArray lobbies = null;
+    
 
     // New Google Map instance
 	GoogleMap googleMap;
@@ -91,7 +101,18 @@ public class MainActivity extends FragmentActivity implements LocationListener {
             
         }else {	// Google Play Services are available
         	
-        	new GetLobby().execute();
+        	try {
+        		
+        		// get lobbies from JSON and parse them. Wait until async task is complete before continuing
+				new GetLobby().execute().get();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	
         	Log.d("Lobby", "Returned from GetLobby");
 			// Getting reference to the SupportMapFragment of activity_main.xml
 			SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -104,11 +125,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			//Class[] c = new Class[48];
 			// e.g. c[1] = LogonActivity.class;
 			
-			// CRITICAL SECTION
-			// WAIT UNTIL AYSNC TASK IS COMPLETE BEFORE CONTINUING
-			while (MUTEX_LOCK == false){
-				Log.d("MUTEX", "Waiting for async task to finish");
-			}
+	
 			
 			// display markers and circles around markers
 			Marker marker[] = new Marker[lobbyList.size()];
@@ -116,11 +133,11 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 			
 			// iterate through lobbyList and place markers on map
 			//Iterator itList = lobbyList.iterator();
-			Log.d("Lobby", "About to Enter outer for loop");
+			Log.d("Lobby", "About to Enter for loop");
 			int count = lobbyList.size();
 			
 			for (int i=0; i < count; i++){
-				Log.d("Lobby", "Inside outer for loop");
+				Log.d("Lobby", "Inside for loop");
 				HashMap<String, String> lobbyMap = lobbyList.get(i);
 
 				String id = lobbyMap.get(TAG_ID);
@@ -129,13 +146,15 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 				double lng = Double.parseDouble(lobbyMap.get(TAG_LNG));
 				int rad = Integer.parseInt(lobbyMap.get(TAG_RAD));
 				String thumb = lobbyMap.get(TAG_THUMB);
+				String population = lobbyMap.get(TAG_POPULATION);
+				
 
 				Log.d("Lobby", "Creating Markers");
 				// Add Marker
 				marker[i] = googleMap.addMarker(new MarkerOptions()  
 				.position(new LatLng(lat, lng))  
 				.title(name)
-				.snippet("Lobby Population: 0"));
+				.snippet("Lobby Population: " + population));
 
 				//allMarkersMap.put(marker[k], LogonActivity.class);
 
@@ -213,7 +232,9 @@ public class MainActivity extends FragmentActivity implements LocationListener {
         	
 
         	// JSON string from URL
-            JSONObject json = jParser.getJSONFromUrl(url);
+            JSONObject json = jParser.getJSONFromUrl(urlGetLobbyList);
+ 
+            
 
             // check log cat for response
             Log.d("Create Response", json.toString());
@@ -242,6 +263,15 @@ public class MainActivity extends FragmentActivity implements LocationListener {
                     String rad = l.getString(TAG_RAD);
                     String thumb = l.getString(TAG_THUMB);
                     
+                    // Building Parameters for getting lobby population
+                    List<NameValuePair> params = new ArrayList<NameValuePair>();
+                    params.add(new BasicNameValuePair("lobbyId", id));
+                    
+                    // getting JSON Object
+                    JSONObject json2 = jParser2.makeHttpRequest(urlGetLobbyPopulation,
+                                    "POST", params);
+                    String population = json2.getString(TAG_POPULATION);
+                    
                     // creating new HashMap
                     HashMap<String, String> lobbyHashMap = new HashMap<String, String>();
                     
@@ -252,9 +282,12 @@ public class MainActivity extends FragmentActivity implements LocationListener {
                     lobbyHashMap.put(TAG_LNG, lng);
                     lobbyHashMap.put(TAG_RAD, rad);
                     lobbyHashMap.put(TAG_THUMB, thumb);
+                    lobbyHashMap.put(TAG_POPULATION, population);
                     
                     //adding HashList to ArrayList
                     lobbyList.add(lobbyHashMap);
+  
+                    
                 }
             } catch (JSONException e) {
             	e.printStackTrace();
@@ -270,7 +303,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
         protected void onPostExecute(String file_url) {
                 // dismiss the dialog once done
                 pDialog.dismiss();
-                MUTEX_LOCK = true;
+             
                 Log.d("Login", "Just dismissed dialog box");
                 Log.d("Login", "File_url: "+file_url);
 
