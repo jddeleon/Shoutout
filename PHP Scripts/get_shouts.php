@@ -23,7 +23,10 @@ if (!empty($_POST))
 // Retrieve the list of shouts from the DB
 try
 {        
-        $stmt = $db->prepare("SELECT ?? WHERE lobby_id = ?");
+        $stmt = $db->prepare("SELECT username, shout, created_at
+			      FROM user
+			      INNER JOIN shout
+			      ON user.user_id = shout.user_id");
         $stmt->bind_param("s", $lobbyId);
         $stmt->execute();
         while ($stmt->fetch())
