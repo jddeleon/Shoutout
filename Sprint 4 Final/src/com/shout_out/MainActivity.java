@@ -377,7 +377,7 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 		
 		// Setting latitude and longitude in the TextView tv_location
 		tvLocation.setText("Latitude:" +  latitude  + ", Longitude:"+ longitude );		
-		// Enter Library
+				// Enter Library
 				if (LobbyID.getLobbyID() != 2 &&((longitude >= -121.846973 && longitude <= -121.845529) && (latitude >= 39.727611 && latitude <= 39.728616))){
 					LobbyID.setLobbyID(2);
 					AlertDialog.Builder newlobby=new AlertDialog.Builder(this);
@@ -479,6 +479,39 @@ public class MainActivity extends FragmentActivity implements LocationListener {
 				}
 				// Exit Bear
 				else if (LobbyID.getLobbyID() == 3 && ((longitude <= -121.842877 || longitude >= -121.842373) && (latitude <= 39.729387 || latitude >= 39.728957))){
+					LobbyID.setLobbyID(-1);
+				}
+				// Enter Sylvester's
+				if (LobbyID.getLobbyID() != 4 && ((longitude >= -121.845757 && longitude <= -121.844526) && (latitude >= 39.729483 && latitude <= 39.730464))){
+					LobbyID.setLobbyID(4);
+					AlertDialog.Builder newlobby=new AlertDialog.Builder(this);
+			         
+					newlobby.setTitle("Sylvester's Cafe");
+					newlobby.setMessage("Do you want to enter the lobby?");
+					newlobby.setIcon(android.R.drawable.ic_dialog_alert);
+					newlobby.setPositiveButton("Join", new DialogInterface.OnClickListener() {
+			 
+			            @Override
+			            public void onClick(DialogInterface dialog, int i) {
+							Intent lobby = new Intent(getApplicationContext(), UserLazyList.class);
+							
+							lobby.putExtra("lobbyId", LobbyID.getLobbyID());
+							lobby.putExtra("userId", userId);
+							lobby.putExtra("lobbyName", "Sylvester's Cafe");
+							startActivity(lobby);  
+			            }
+			        });
+					newlobby.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+			            @Override
+			            public void onClick(DialogInterface dialog, int i) {
+			                dialog.dismiss();
+			            }
+			        });
+					newlobby.create();
+					newlobby.show();
+				}
+				// Exit Sylvester's
+				else if (LobbyID.getLobbyID() == 4 && ((longitude <= -121.845757 || longitude >= -121.844526) && (latitude <= 39.729483 || latitude >= 39.730464))){
 					LobbyID.setLobbyID(-1);
 				}
 				
