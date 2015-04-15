@@ -1,7 +1,0 @@
-INDEX VERSION 1.126+/Users/bosun/Desktop/GitHub/ProjectShoutout/.metadata/.plugins/org.eclipse.jdt.core
-3761258506.index
-158254398.index
-3392691413.index
-2879166364.index
-4055278942.index
-1802595030.index
